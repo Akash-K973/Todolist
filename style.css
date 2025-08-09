@@ -1,0 +1,156 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif,'Poppins';
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    min-height: 100vh;
+    padding-left: 150px;
+     background: linear-gradient(-45deg,darkgreen,forestgreen,chartreuse,green);
+     cursor: url(''), auto;
+}
+
+h1{
+    padding: 5px;
+    padding-bottom: 20px;
+    color: white;
+    padding-left: 5px;
+    
+}
+.inp_cont{
+    padding: 50px 80px;
+    background-color: transparent;
+    backdrop-filter: blur(650px);
+    animation: glow-border 1.5s infinite;
+}
+
+@keyframes glow-border{from { box-shadow: 0 0 10px chartreuse;}
+                        to{box-shadow: 0 0 20px #0ff;}}
+
+.inp-val{
+    padding: 30px;
+    background-color: transparent;
+    backdrop-filter: blur(650px);
+    color: chartreuse;
+}
+
+#inp{
+    padding: 10px;
+    border: 2px solid;
+    border-radius: 20px;
+    border-color: rgb(213, 218, 215);
+    background-color: darkgreen;
+    color: white;
+     animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow{0%{box-shadow :0 0 10px chartreuse,0 0 20px #0ff;}
+                100%{box-shadow: 0 0 20px #0ff,0 0 40px chartreuse}
+}
+
+#inp:hover{
+    color: white;
+    background-color: chartreuse;
+    border: solid;
+    border-color: white;
+    transform: scale(1.02);
+    outline: none;
+}
+
+#inp:focus{
+    color: white;
+    background-color: chartreuse;
+    border: solid;
+    border-color: white;
+    outline: none;
+}
+
+#inp::placeholder{
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.but{
+    padding: 5px;
+    border: solid;
+    border-radius: 5px;
+    border-color: white;
+    color: white;
+    background-color: chartreuse;
+    transition: all 0.3s ease;
+    animation: glow 1.5s infinite alternate;
+    
+}
+
+.but:active{
+    transform: scale(0.95);
+}
+
+@keyframes glow{0%{box-shadow :0 0 10px chartreuse,0 0 20px #0ff;}
+                100%{box-shadow: 0 0 20px #0ff,0 0 40px chartreuse}
+}
+
+.but:hover{
+    color: white;
+    background-color: chartreuse;
+    border: solid;
+    border-color: white;
+
+    transform: scale(1.02);
+}
+
+.list{
+    padding-top: 30px;
+    color: white;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 10px;
+    padding: 4px;
+    font-size: 1.2rem;
+    list-style: none;
+    border: solid;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.1);
+    border-color: aliceblue;
+    border-radius: 20px;
+    padding-left: 10px;
+    animation: glow 1.5s infinite alternate;
+}
+
+.butt{
+    padding: 5px;
+    color: white;
+    border-radius: 3px;
+    border: solid;
+    border-color: aliceblue;
+    background-color: chartreuse;
+    border-radius: 20px;
+    
+}
+
+.butt:hover{
+    color: white;
+    background-color: chartreuse;
+    border: solid;
+    border-color: white;
+    transform: scale(1.02);
+}
