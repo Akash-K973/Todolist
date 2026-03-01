@@ -4,33 +4,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do list</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
+    <button class="open_dash" onclick="opendash()"><i class="fa-solid fa-chart-line"></i>
+</button>
     <div class="inp_cont">
         <h1>TO DO List</h1>
         <div class="inp-val">
         <input type="text" placeholder="Enter Task" id="inp">
-        <button onclick="add()" class="but"><b>ADD</b></button>
+        <button onclick="add()" class="but"><i class="fa-solid fa-plus"></i></button>
         </div>
         <div class="list">
-        <ul id="input">
-            
+        <ul id="input" class="order">
+            <li class="lists"><input id="inp_check" type="checkbox"></input><span id = "text_list">Hello</span><button class="edit_taskbut" onclick="editlist(this)"><i class="fa-solid fa-pen-to-square"></i></button><button onclick="del(event)" class="butt"><i class="fa-solid fa-trash"></i></button></li>
         </ul>
         </div>
     </div>
+    <div class="overlay"></div>
+    <div class="dashboard">
+        <h1 class="dash_name">DASH BOARD</h1>
+        <ul><strong>
+            <li class="dast_list"><a href="index.htm">Home</a></li>
+            <li class="dast_list" onclick="openabout()">About</li>
+            <li class="dast_list" onclick="openrating()">Rating</li></strong>
+        </ul>
+        <button class="cl_dash" onclick="closedash()"><strong>close</strong></button>
+    </div>
+    <div class="about">
+        <p class="title_about"><b>About</b></p>
+        <p class="para_about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ex explicabo rem facilis, cum sunt in quis molestias vitae quo, labore, aliquam amet culpa illum earum neque provident maxime fuga!</p>
+        <button class="cl_about" onclick="closeabout()">close</button>
+    </div>
+    <div class="rating">
+        <p class="title_rating"><b>Rating</b></p>
+        <span class="star_rate" data-value="1">&#9733;</span>
+        <span class="star_rate" data-value="2">&#9733;</span>
+        <span class="star_rate" data-value="3">&#9733;</span>
+        <span class="star_rate" data-value="4">&#9733;</span>
+        <span class="star_rate" data-value="5">&#9733;</span>
+        <button class="send_rate">send</button>
+        <button class="cl_rate" onclick="closerate()">close</button>
+        <p class="rate_value">Your Rating: <span id="rating-value" >0</span></p>
+    </div>
+    <div class="edit">
+        <p class="edit_title"><b>Edit Task</b></p>
+        <input type="text" id="edit_list" placeholder="Edit Task">
+        <button class="edit_button"  onclick="editTask()">edit</button>
+        <button class="close_button" onclick="editclose()">close</button>
+    </div>
 </body>
+
 <script>
-     var ul = document.getElementById("input")
-     var inp = document.getElementById("inp")
-     function add(){
-        var li = document.createElement("li")
-        li.innerHTML=inp.value + "<button onclick='del(event)' class='butt'>Delete</button>"
-        ul.append(li)
-     }
-     function del(event){
+    var ul = document.getElementById("input");
+    var inp = document.getElementById("inp");
+    var pop = document.querySelector(".dashboard");
+    var over = document.querySelector(".overlay");
+    var ab = document.querySelector(".about");
+    var ra = document.querySelector(".rating");
+    var et = document.querySelector(".edit");
+    var eit = document.getElementById("edit_list");
+    var lt = document.querySelector(".lists");
+    var text = document.getElementById("text_list");
+    var parent;
+
+    const stars = document.querySelectorAll(".star_rate");
+    const ratingValue = document.getElementById("rating-value");
+    const sendBtn = document.querySelector(".send_rate");
+    var newText = null;
+    let selectedRating = 0;
+    let currentLi = null;
+
+    //console.log("Hello World!");
+
+    function editTask(){
+        parent.innerHTML ="<input id='inp_check' type='checkbox'></input><span id='text_list'>"+eit.value +"</span><button class='edit_taskbut' onclick='editlist(this)'><i class='fa-solid fa-pen-to-square'></i></button><button onclick='del(event)' class='butt'><i class='fa-solid fa-trash'></i></button>";
+        eit.value=" ";
+        over.style.display = "none";
+        et.style.display = "none";
+    }
+
+    function editlist(event){
+        newText = eit.value;
+        parent = event.parentElement;
+        //event.parentElement.innerHTML ="<input id='inp_check' type='checkbox'></input><span class='text_list'>"+eit.value +"</span><button class='edit_taskbut' onclick='editlist(this)'>edit</button><button onclick='del(event)' class='butt'>Delete</button>";
+        over.style.display = "block";
+        et.style.display = "block";
+    }
+
+
+    function editclose(){
+        over.style.display="none";
+        et.style.display="none";
+    }
+
+    document.getElementById("inp").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        add();
+        inp.value=" ";
+    }  
+    });
+
+    // Click rating
+    stars.forEach(star => {
+        star.addEventListener("click", () => {
+            selectedRating = star.getAttribute("data-value");
+            ratingValue.textContent = selectedRating;
+
+            stars.forEach(s => {
+                s.classList.remove("active");
+                if (s.getAttribute("data-value") <= selectedRating) {
+                    s.classList.add("active");
+                }
+            });
+        });
+    });
+
+    sendBtn.addEventListener("click", () => {
+        if (selectedRating == 0) {
+            alert("Please select a rating!");
+        } else {
+            alert("Rating sent: " + selectedRating);
+        }
+    }); 
+
+    function openrating(){
+    pop.style.display="block"
+    over.style.display="block"
+    ra.style.display="block"
+    ab.style.display="none"
+    }
+
+    function closerate(){
+        ra.style.display="none"
+    }
+
+    function add(){
+    var li = document.createElement("li")
+    li.className="lists";
+    li.innerHTML="<input id='inp_check' type='checkbox'></input><span id='text_list'>"+inp.value +"</span><button class='edit_taskbut' onclick='editlist(this)'><i class='fa-solid fa-pen-to-square'></i></button><button onclick='del(event)' class='butt'><i class='fa-solid fa-trash'></i></button>"
+    ul.append(li)
+    }
+
+    function del(event){
         event.target.parentElement.remove()
-     }
+    }
+
+    function closedash(){
+    pop.style.display="none"
+    over.style.display="none"
+    }
+
+    function opendash(){
+    pop.style.display="block"
+    over.style.display="block"
+    ab.style.display="none"
+    }
+
+    function openabout(){
+    pop.style.display="block"
+    over.style.display="block"
+    ab.style.display="block"
+    ra.style.display="none"
+    }
+
+    function closeabout(){
+    ab.style.display="none"
+    }
      
 </script>
-
 </html>
