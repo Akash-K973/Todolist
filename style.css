@@ -30,8 +30,8 @@ h1{
     animation: glow-border 1.5s infinite;
 }
 
-@keyframes glow-border{from { box-shadow: 0 0 10px chartreuse;}
-                        to{box-shadow: 0 0 20px #0ff;}}
+/*@keyframes glow-border{from { box-shadow: 0 0 10px chartreuse;}
+                        to{box-shadow: 0 0 20px #0ff;}}*/
 
 .inp-val{
     padding: 30px;
@@ -50,9 +50,9 @@ h1{
      animation: glow 1.5s infinite alternate;
 }
 
-@keyframes glow{0%{box-shadow :0 0 10px chartreuse,0 0 20px #0ff;}
+/*@keyframes glow{0%{box-shadow :0 0 10px chartreuse,0 0 20px #0ff;}
                 100%{box-shadow: 0 0 20px #0ff,0 0 40px chartreuse}
-}
+}*/
 
 #inp:hover{
     color: white;
@@ -77,24 +77,24 @@ h1{
 }
 
 .but{
-    padding: 5px;
+    font-size: 15px;
+    padding: 8px;
     border: solid;
-    border-radius: 5px;
+    border-radius: 50%;
     border-color: white;
     color: white;
     background-color: chartreuse;
     transition: all 0.3s ease;
-    animation: glow 1.5s infinite alternate;
-    
+    /*animation: glow 1.5s infinite alternate;*/  
 }
 
 .but:active{
     transform: scale(0.95);
 }
 
-@keyframes glow{0%{box-shadow :0 0 10px chartreuse,0 0 20px #0ff;}
+/*@keyframes glow{0%{box-shadow :0 0 10px chartreuse,0 0 20px #0ff;}
                 100%{box-shadow: 0 0 20px #0ff,0 0 40px chartreuse}
-}
+}*/
 
 .but:hover{
     color: white;
@@ -110,19 +110,22 @@ h1{
     color: white;
 }
 
-ul{
+.order{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
     width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-li{
+.lists{
     display: flex;
-    justify-content: space-between;
+    gap: 5px;
     align-items: center;
+    justify-content: space-between;
     width: 300px;
     margin-bottom: 10px;
     padding: 4px;
@@ -144,7 +147,7 @@ li{
     border-color: aliceblue;
     background-color: chartreuse;
     border-radius: 20px;
-    
+    margin-left: 0;
 }
 
 .butt:hover{
@@ -153,4 +156,287 @@ li{
     border: solid;
     border-color: white;
     transform: scale(1.02);
+}
+
+.edit_taskbut{
+    padding: 5px;
+    color: white;
+    border-radius: 3px;
+    border: solid;
+    border-color: aliceblue;
+    background-color: chartreuse;
+    border-radius: 20px;
+    margin-left: 100px;
+}
+
+.overlay{
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+.dashboard{
+    display: none;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 30%;
+    left: 0;
+    z-index: 2;
+    background: linear-gradient(45deg,darkgreen,forestgreen,chartreuse);    
+}
+
+.dash_name{
+    color: white;
+    border: none;
+    background: linear-gradient(to right,chartreuse,forestgreen,darkgreen);
+    padding: 5px;
+}
+
+.dast_list{
+    color: white;
+    padding: 5px;
+    margin-left: 50px;
+    margin-top: 30px;  
+    list-style: none;  
+    cursor: pointer;
+}
+
+.cl_dash{
+    padding: 5px;
+    margin-left: 70%;
+    margin-top: 100%;
+    color: white;
+    background-color: chartreuse;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.cl_dash:hover{
+    color: chartreuse;
+    transform: translateY(1.5px);
+    background-color: white;
+    border: 2px solid chartreuse;
+    box-shadow: 0 0 5px 2px chartreuse;
+}
+
+.open_dash{
+    display: block;
+    top: 0;
+    left: 0;
+    position: absolute;
+    margin-bottom: 100%;
+    margin-right: 100%;
+    margin-top: 5px;
+    margin-left: 5px;
+    color: chartreuse;
+    padding: 5px;
+    background-color: darkgreen;
+    outline: none;
+    border: none;
+    animation: glow 1.5s infinite alternate;
+}
+
+.about{
+    color: white;
+    height: 37%;
+    width: 30%;
+    position: absolute;
+    z-index: 3;
+    background-color: chartreuse;
+    display: none;
+    padding: 10px;
+    border: solid 3px darkgreen ;
+}
+
+.cl_about{
+    padding: 5px;
+    color: white;
+    background-color: chartreuse;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid white;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.title_about{
+    font-size: 30px;
+    border-bottom: 2px solid white;
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+
+.para_about{
+    padding-top: 5px;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+.rating{
+    border: solid 3px darkgreen ;
+    color: white;
+    height: 37%;
+    width: 30%;
+    position: absolute;
+    z-index: 3;
+    background-color: chartreuse;
+    display: none;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.star_rate{
+    padding-right: 5px;
+    padding-left: 5px;
+    cursor: pointer;
+    color: #bbb;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+    font-size: 20px;
+}
+
+.cl_rate{
+   padding: 5px;
+    color: white;
+    background-color: chartreuse;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid white;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+.send_rate{
+padding: 5px;
+    color: white;
+    background-color: chartreuse;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid white;
+    bottom: 0;
+    position: absolute;
+    right: 55px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.star_rate:hover,.star_rate:hover ~ .star_rate {
+    color: #bbb;
+}
+
+.star_rate.active {
+    color: darkgreen;
+    font-size: 20px;
+}
+
+.title_rating{
+    font-size: 30px;
+    border-bottom: 2px solid white;
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+
+.rate_value{
+    margin-top: 5px;
+}
+
+#inp_check{
+    width: 20px;
+    transform: scale(1.5);
+    margin-right: 2px;
+    accent-color: darkgreen;
+}
+
+.text_list{
+    padding-left: 10px;
+}
+
+.textlist{
+    align-items: center;
+    gap: 5px;
+}
+
+.edit{
+    color: white;
+    height: 37%;
+    width: 30%;
+    position: absolute;
+    z-index: 3;
+    background-color: chartreuse;
+    display: none;
+    padding: 10px;
+    border: solid 3px darkgreen ;
+}
+
+#edit_list{
+    padding: 10px;
+    border: 2px solid;
+    border-radius: 20px;
+    border-color: rgb(213, 218, 215);
+    background-color: darkgreen;
+    color: white;
+    animation: glow 1.5s infinite alternate;
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+.edit_list::placeholder{
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.edit_button{
+    padding: 5px;
+    color: white;
+    background-color: chartreuse;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid white;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.close_button{
+    padding: 5px;
+    color: white;
+    background-color: chartreuse;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid white;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    margin-bottom: 5px;
+    margin-right: 50px;
+}
+
+.edit_title{
+    font-size: 30px;
+    border-bottom: 2px solid white;
+    padding-left: 5px;
+    padding-bottom: 10px;
 }
